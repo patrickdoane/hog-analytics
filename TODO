@@ -1,0 +1,23 @@
+☐ HOG ANALYTICS
+    ☐ What is the purpose of hog-analytics?
+        - We want to display graphical data about raid statistics.
+        - What technologies do we need to accomplish?
+        - HTML, CSS, Javascript (React), Webserver (?)
+        - A way to extract the data from Raid Performance Breakdown
+            - Javascript (https://discord.gg/nQq2Vks8)
+
+    ☐ Graphic chart requests:
+        ☐ Can we run a script to go through logs to see how many mana potions Unbearably has used?
+            ☐ Take the avg auction house value of mana potions and calculate in our raids?
+            ☐ How expensive is the meme spec?
+        ☐ BIS battle shouter
+        ☐ Number of times trinket used
+        ☐ Track progress over time of various categories
+
+
+    ☐ Next step: Represent data graphically
+        ☐ D3.js (https://d3js.org/)
+
+☐ STREAM IDEAS
+    - BOOST O' CLOCK GIVEAWAY
+        ☐ USE AN EXTENSION FOR PEOPLE TO ENTER

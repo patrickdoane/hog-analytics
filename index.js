@@ -13,7 +13,7 @@ const TOKEN_PATH = 'token.json';
 fs.readFile('credentials.json', (err, content) => {
     if (err) return console.log('Error loading client secret file:', err);
     // Authorize a client with credentials, then call the Google Sheets API.
-    authorize(JSON.parse(content), listBattleShoutUptimeOnWyne);
+    authorize(JSON.parse(content), listBattleShoutUptimeOnPhysical);
 });
 
 /**
@@ -91,7 +91,41 @@ function listMajors(auth) {
     });
 }
 
-function listBattleShoutUptimeOnWyne(auth) {
+function listBattleShoutUptimeOnPhysical(auth) {
+    const sheets = google.sheets({ version: 'v4', auth });
+    sheets.spreadsheets.values.get({
+        spreadsheetId: '1gzizOCf7Pj5KEfZSjkWm3XRQmJsZxJyKpT-KIrXN2ZQ',
+        range: 'Physical!K3:P',
+    }, (err, res) => {
+        if (err) return console.log('The API returned an error: ' + err);
+        const rows = res.data.values;
+        if (rows.length) {
+            console.log('Battle shout uptime on Physical:');
+            // Print K-P, row 3
+            const battleShoutValues = rows[0];
+            console.log(battleShoutValues);
+        } else {
+            console.log('No data found.');
+        }
+    });
+    sheets.spreadsheets.values.get({
+        spreadsheetId: '1gzizOCf7Pj5KEfZSjkWm3XRQmJsZxJyKpT-KIrXN2ZQ',
+        range: 'Tank!C3',
+    }, (err, res) => {
+        if (err) return console.log('The API returned an error: ' + err);
+        const rows = res.data.values;
+        if (rows.length) {
+            console.log('Battle shout uptime on Physical:');
+            // Print K-P, row 3
+            const battleShoutValues = rows[0];
+            console.log(battleShoutValues);
+        } else {
+            console.log('No data found.');
+        }
+    });
+}
+
+function listBattleShoutUptimeOnTank(auth) {
     const sheets = google.sheets({ version: 'v4', auth });
     sheets.spreadsheets.values.get({
         spreadsheetId: '1gzizOCf7Pj5KEfZSjkWm3XRQmJsZxJyKpT-KIrXN2ZQ',
@@ -100,12 +134,10 @@ function listBattleShoutUptimeOnWyne(auth) {
         if (err) return console.log('The API returned an error: ' + err);
         const rows = res.data.values;
         if (rows.length) {
-            console.log('Battle shout uptime on Wyne:');
-            // Print column C, index 3
-            rows.map((row) => {
-                console.dir(`${row}`);
-                // console.log(`${row[3]}`);
-            });
+            console.log('Battle shout uptime on Physical:');
+            // Print K-P, row 3
+            const battleShoutValues = rows[0];
+            console.log(battleShoutValues);
         } else {
             console.log('No data found.');
         }
